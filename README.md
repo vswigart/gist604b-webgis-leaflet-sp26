@@ -4,13 +4,13 @@ Repository for building an interactive web mapping application using HTML, CSS, 
 ## Repository Structure
     .
     ├── data/
-    │   ├── your_point_layer.geojson
-    │   ├── your_line_layer.geojson
-    │   └── your_polygon_layer.geojson
+    │   ├── Texas_Airports.geojson
+    │   ├── Texas_Education_Boundaries.geojson
+    │   └── TxDOT_Texas_Toll_Roads.geojson
     ├── js/
-    │   └── your_js_file.js
+    │   └── Texas_js_file.js
     ├── css/
-    │   └── your_css_file.css
+    │   └── Texas_css_file.css
     ├── index.html
     ├── package.json
     ├── package-lock.json
