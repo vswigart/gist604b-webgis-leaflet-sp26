@@ -30,8 +30,9 @@ fetch('data/Texas_Airports.geojson')
                 });
             },
             onEachFeature: (feature, layer) => {
-                layer.bindPopup(`<b>Airport:</b> ${feature.properties.ARPRT_NM}`);
-            }
+    console.log("AIRPORT PROPERTIES:", feature.properties);
+    layer.bindPopup(`<b>Airport:</b> ${feature.properties.ARPRT_NM}`);
+}
         }).addTo(airportsLayer);
     });
 
@@ -46,8 +47,9 @@ fetch('data/Texas_Education_Boundaries.geojson')
                 fillOpacity: 0.3
             },
             onEachFeature: (feature, layer) => {
-                layer.bindPopup(`<b>School:</b> ${feature.properties.SCHOOL_NM}`);
-            }
+    console.log("EDU PROPERTIES:", feature.properties);
+    layer.bindPopup(`<b>School:</b> ${feature.properties.SCHOOL_NM}`);
+}
         }).addTo(educationLayer);
     });
 
@@ -61,8 +63,9 @@ fetch('data/TxDOT_Texas_Toll_Roads.geojson')
                 weight: 3
             },
             onEachFeature: (feature, layer) => {
-                layer.bindPopup(`<b>Toll Road:</b> ${feature.properties.TOLL_NM}`);
-            }
+    console.log("TOLL PROPERTIES:", feature.properties);
+    layer.bindPopup(`<b>Toll Road:</b> ${feature.properties.TOLL_NM}`);
+}
         }).addTo(tollRoadsLayer);
     });
 
