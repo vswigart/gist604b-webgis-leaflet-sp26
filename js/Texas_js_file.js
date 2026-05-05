@@ -10,6 +10,16 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Scale bar
 L.control.scale().addTo(map);
 
+// --- Create custom panes so popups attach correctly ---
+map.createPane('airportsPane');
+map.getPane('airportsPane').style.zIndex = 650;
+
+map.createPane('educationPane');
+map.getPane('educationPane').style.zIndex = 600;
+
+map.createPane('tollPane');
+map.getPane('tollPane').style.zIndex = 620;
+
 // Layer groups
 let airportsLayer = L.layerGroup();
 let educationLayer = L.layerGroup();
@@ -20,6 +30,7 @@ fetch('data/Texas_Airports.geojson')
     .then(res => res.json())
     .then(data => {
         L.geoJSON(data, {
+            pane: 'airportsPane',
             pointToLayer: (feature, latlng) => {
                 return L.circleMarker(latlng, {
                     radius: 6,
@@ -30,9 +41,8 @@ fetch('data/Texas_Airports.geojson')
                 });
             },
             onEachFeature: (feature, layer) => {
-    console.log("AIRPORT PROPERTIES:", feature.properties);
-    layer.bindPopup(`<b>Airport:</b> ${feature.properties.ARPRT_NM}`);
-}
+                layer.bindPopup(`<b>Airport:</b> ${feature.properties.ARPRT_NM}`);
+            }
         }).addTo(airportsLayer);
     });
 
@@ -41,15 +51,15 @@ fetch('data/Texas_Education_Boundaries.geojson')
     .then(res => res.json())
     .then(data => {
         L.geoJSON(data, {
+            pane: 'educationPane',
             style: {
                 color: 'green',
                 weight: 2,
                 fillOpacity: 0.3
             },
             onEachFeature: (feature, layer) => {
-    console.log("EDU PROPERTIES:", feature.properties);
-    layer.bindPopup(`<b>School:</b> ${feature.properties.SCHOOL_NM}`);
-}
+                layer.bindPopup(`<b>School:</b> ${feature.properties.SCHOOL_NM}`);
+            }
         }).addTo(educationLayer);
     });
 
@@ -58,14 +68,14 @@ fetch('data/TxDOT_Texas_Toll_Roads.geojson')
     .then(res => res.json())
     .then(data => {
         L.geoJSON(data, {
+            pane: 'tollPane',
             style: {
                 color: 'blue',
                 weight: 3
             },
             onEachFeature: (feature, layer) => {
-    console.log("TOLL PROPERTIES:", feature.properties);
-    layer.bindPopup(`<b>Toll Road:</b> ${feature.properties.TOLL_NM}`);
-}
+                layer.bindPopup(`<b>Toll Road:</b> ${feature.properties.TOLL_NM}`);
+            }
         }).addTo(tollRoadsLayer);
     });
 
