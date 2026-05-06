@@ -39,17 +39,19 @@ Open the GitHub Pages URL generated in your repository settings
 ```
 /
 ├── data/
-│   ├── your_point_layer.geojson
-│   ├── your_line_layer.geojson
-│   └── your_polygon_layer.geojson
+│   ├── .gitkeep
+│   ├── Texas_Airports.geojson
+│   ├── Texas_Education_Boundaries.geojson
+│   └── TxDOT_Texas_Toll_Roads.geojson
 ├── js/
-│   └── your_js_file.js
+│   ├── .gitkeep
+│   └── Texas_js_file.js
 ├── css/
-│   └── your_css_file.css
+│   ├── .gitkeep
+│   └── Texas_css_file.css
 ├── index.html
 ├── package.json
 ├── package-lock.json
 ├── README.md
 └── .gitignore
 ```
-
